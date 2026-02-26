@@ -31,16 +31,36 @@
 
     <h2>Predict House Price</h2>
 
-    <form method="post" action="/predict/">
+     <form method="post" action="/predict/">
         {% csrf_token %}
 
-        <input type="number" step="any" name="longitude" placeholder="Longitude" required>
-        <input type="number" step="any" name="latitude" placeholder="Latitude" required>
-        <input type="number" step="any" name="housing_median_age" placeholder="Housing Median Age">
-        <input type="number" step="any" name="total_rooms" placeholder="Total Rooms">
-        <input type="number" step="any" name="population" placeholder="Population">
-        <input type="number" step="any" name="households" placeholder="Households">
-        <input type="number" step="any" name="median_income" placeholder="Median Income" required>
+        <input type="number" step="any" name="longitude"
+               placeholder="Longitude (Example: -118.24 | Range: -124 to -114)" required>
+        <small>Location East-West coordinate of the house.</small>
+
+        <input type="number" step="any" name="latitude"
+               placeholder="Latitude (Example: 34.05 | Range: 32 to 42)" required>
+        <small>Location North-South coordinate of the house.</small>
+
+        <input type="number" step="any" name="housing_median_age"
+               placeholder="Housing Median Age (Example: 29 | Range: 1 to 52)">
+        <small>Average age of houses in that area (in years).</small>
+
+        <input type="number" step="any" name="total_rooms"
+               placeholder="Total Rooms (Example: 2500)">
+        <small>Total number of rooms in that neighborhood block.</small>
+
+        <input type="number" step="any" name="population"
+               placeholder="Population (Example: 1200)">
+        <small>Total number of people living in that block.</small>
+
+        <input type="number" step="any" name="households"
+               placeholder="Households (Example: 500)">
+        <small>Number of families in that block.</small>
+
+        <input type="number" step="any" name="median_income"
+               placeholder="Median Income (Example: 5 = $50,000 | Range: 0.5 to 15)" required>
+        <small>Income is scaled. Example: 4 means approx $40,000.</small>
 
         <button type="submit">Predict</button>
     </form>

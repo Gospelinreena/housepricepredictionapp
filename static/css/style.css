@@ -74,3 +74,9 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
+small {
+    display: block;
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
