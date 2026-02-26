@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav>
+    <a href="/descriptive/">Descriptive</a>
+    <a href="/inferential/">Inferential</a>
+    <a href="/prediction/">Prediction</a>
+</nav>
+
+<div class="container">
+
+{% if page == 'descriptive' %}
+
+    <h2>Descriptive Statistics</h2>
+    <p>Rows: {{ rows }}</p>
+    <p>Columns: {{ cols }}</p>
+    {{ summary|safe }}
+
+{% elif page == 'inferential' %}
+
+    <h2>Correlation</h2>
+    {{ correlation|safe }}
+
+{% elif page == 'prediction' %}
+
+    <h2>Predict House Price</h2>
+
+    <form method="post" action="/predict/">
+        {% csrf_token %}
+
+        <input type="number" step="any" name="longitude" placeholder="Longitude" required>
+        <input type="number" step="any" name="latitude" placeholder="Latitude" required>
+        <input type="number" step="any" name="housing_median_age" placeholder="Housing Median Age">
+        <input type="number" step="any" name="total_rooms" placeholder="Total Rooms">
+        <input type="number" step="any" name="population" placeholder="Population">
+        <input type="number" step="any" name="households" placeholder="Households">
+        <input type="number" step="any" name="median_income" placeholder="Median Income" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+{% elif page == 'result' %}
+
+    <h2>Predicted Price</h2>
+    <h1>{{ prediction }}</h1>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
