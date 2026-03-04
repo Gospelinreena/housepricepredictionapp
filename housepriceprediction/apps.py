@@ -1,10 +1,5 @@
-from django.urls import path
-from . import views
+from django.apps import AppConfig
 
-urlpatterns = [
-    path('', views.descriptive),
-    path('descriptive/', views.descriptive),
-    path('inferential/', views.inferential),
-    path('prediction/', views.prediction),
-    path('predict/', views.predict),
-]
+class HousepricepredictionConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'housepriceprediction'
